@@ -101,6 +101,7 @@ runs:
         cd actions && ls
         ${{ github.workspace }}/actions/script.sh
 
+    - uses: actions/checkout@v4
     - name: Upload Scan Results Artifact
       if: success() || failure()
       uses: actions/upload-artifact@v3
