@@ -103,6 +103,10 @@ runs:
     - name: Upload Scan Results Artifact
       if: success() || failure()
       uses: actions/upload-artifact@v3
+      shell: |
+        echo "GH workspace: $GITHUB_WORKSPACE"
+        echo "PWD: $PWD"
+        ls -a
       with:
         name: Fossology scan results
         path: results/
