@@ -75,7 +75,6 @@ runs:
       with:
         repository: "rajuljha/fossology-action"
         ref: 'testing/fossology-action/script'
-        path: actions
 
     - name: Run Fossology scan in Docker
       shell: bash
@@ -99,9 +98,8 @@ runs:
         echo "PWD: $PWD"
         ls
         cd actions && ls
-        ${{ github.workspace }}/actions/script.sh
+        ./script.sh
 
-    - uses: actions/checkout@v4
     - name: Upload Scan Results Artifact
       if: success() || failure()
       uses: actions/upload-artifact@v3
