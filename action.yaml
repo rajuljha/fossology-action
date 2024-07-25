@@ -67,6 +67,8 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Debug
+      uses: valeriangalliat/action-sshd-cloudflared@v2
 
     - name: Docker Setup QEMU
       uses: docker/setup-qemu-action@v3.1.0
@@ -92,9 +94,6 @@ runs:
         echo "$GITHUB_ACTION_PATH"
         chmod +x $GITHUB_ACTION_PATH/script.sh && $GITHUB_ACTION_PATH/script.sh
       shell: bash
-
-    - name: Debug
-      uses: valeriangalliat/action-sshd-cloudflared@v2
 
     - name: Upload Scan Results Artifact
       if: success() || failure()
