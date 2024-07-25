@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # Prepare docker run command with arguments
 docker_cmd="docker run --rm --name fossologyscanner -w /opt/repo -v ${PWD}:/opt/repo \

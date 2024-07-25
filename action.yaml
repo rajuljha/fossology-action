@@ -71,11 +71,6 @@ runs:
     - name: Docker Setup QEMU
       uses: docker/setup-qemu-action@v3.1.0
 
-    # - uses: actions/checkout@v4
-    #   with:
-    #     repository: "rajuljha/fossology-action"
-    #     ref: 'testing/fossology-action/script'
-
     - name: Run Fossology scan in Docker
       env:
         GITHUB_API_URL: ${{ inputs.github_api_url }}
