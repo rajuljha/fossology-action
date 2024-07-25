@@ -1,0 +1,21 @@
+
+name: Sync File Permissions
+
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Sync file permissions
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout actions repository
+      
+      - name: Update files permissions
+        run: chmod +x ./script.sh
