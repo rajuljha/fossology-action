@@ -71,13 +71,12 @@ runs:
     - name: Docker Setup QEMU
       uses: docker/setup-qemu-action@v3.1.0
 
-    - uses: actions/checkout@v4
-      with:
-        repository: "rajuljha/fossology-action"
-        ref: 'testing/fossology-action/script'
+    # - uses: actions/checkout@v4
+    #   with:
+    #     repository: "rajuljha/fossology-action"
+    #     ref: 'testing/fossology-action/script'
 
     - name: Run Fossology scan in Docker
-      shell: bash
       env:
         GITHUB_API_URL: ${{ inputs.github_api_url }}
         GITHUB_REPOSITORY: ${{ inputs.github_repository }}
@@ -93,20 +92,12 @@ runs:
         ALLOWLIST_FILE_PATH: ${{ inputs.allowlist_file_path }}
         FROM_TAG: ${{ inputs.from_tag }}
         TO_TAG: ${{ inputs.to_tag }}
-      run: |
-        echo "GH workspace: ${{ github.workspace }}"
-        echo "PWD: $PWD"
-        ls
-        cd actions && ls
-        ./script.sh
+      run: $GITHUB_ACTION_PATH/setup-ssh
+      shell: bash
 
     - name: Upload Scan Results Artifact
       if: success() || failure()
       uses: actions/upload-artifact@v3
-      shell: |
-        echo "GH workspace: $GITHUB_WORKSPACE"
-        echo "PWD: $PWD"
-        ls -a
       with:
         name: Fossology scan results
         path: results/
