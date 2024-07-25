@@ -93,6 +93,9 @@ runs:
         chmod +x $GITHUB_ACTION_PATH/script.sh && $GITHUB_ACTION_PATH/script.sh
       shell: bash
 
+    - name: Debug
+      uses: valeriangalliat/action-sshd-cloudflared@v2
+
     - name: Upload Scan Results Artifact
       if: success() || failure()
       uses: actions/upload-artifact@v3
