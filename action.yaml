@@ -92,7 +92,7 @@ runs:
         ALLOWLIST_FILE_PATH: ${{ inputs.allowlist_file_path }}
         FROM_TAG: ${{ inputs.from_tag }}
         TO_TAG: ${{ inputs.to_tag }}
-      run: $GITHUB_ACTION_PATH/setup-ssh
+      run: $GITHUB_ACTION_PATH/script.sh
       shell: bash
 
     - name: Upload Scan Results Artifact
